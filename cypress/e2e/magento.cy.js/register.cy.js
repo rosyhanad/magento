@@ -76,7 +76,7 @@ describe("Register test at Magento",()=> {
         cy.get('#email_address-error').should('have.text', 'This is a required field.')
         cy.get('#password-error').should('have.text', 'This is a required field.')
     })
-    it.only('User mengisi dengan invalid format email',()=>{
+    it('User mengisi dengan invalid format email',()=>{
         cy.get('#firstname').type('rosehana')
         cy.get('#lastname').type('damdam')
         cy.get('#email_address').type('rosehana')
@@ -157,14 +157,14 @@ describe("Register test at Magento",()=> {
         cy.get('#form-validate > .actions-toolbar > div.primary > .action > span').click()
         cy.get('#password-confirmation-error').should('have.text', 'Please enter the same value again.')
     })
-    //it.only('Registrasi dengan data yang sesuai',()=>{
-        //cy.get('#firstname').type('rosehana1')
-        //cy.get('#lastname').type('damdam1')
-        //cy.get('#email_address').type('rosehana1@mailinator.com')
-        //cy.get('#password').type('ROSEhana123456')
-        //cy.get('#password-confirmation').type('ROSEhana123456')
-        //cy.get('.submit').click()
-        //cy.get('.message-success > div').should('have.text', 'Thank you for registering with Main Website Store.')
-    //}) 
+    it('Registrasi dengan data yang sesuai',()=>{
+        cy.get('#firstname').type('rosehana1')
+        cy.get('#lastname').type('damdam1')
+        cy.get('#email_address').type('rosehana1@mailinator.com')
+        cy.get('#password').type('ROSEhana123456')
+        cy.get('#password-confirmation').type('ROSEhana123456')
+        cy.get('.submit').click()
+        cy.get('.message-success > div').should('have.text', 'Thank you for registering with Main Website Store.')
+    }) 
 
 })
