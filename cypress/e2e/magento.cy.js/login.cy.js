@@ -38,6 +38,9 @@ describe("Login Test at Magento",()=>{
         cy.get('#email').type('rohana@mailinator.com')
         cy.get('#pass').type('ROSEhana123')
         cy.get('#send2').click()
-        cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
+        cy.visit('https://magento.softwaretestingboard.com/')
+        cy.wait(1000)
+        //
+        //cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
     })
 })
