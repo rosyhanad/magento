@@ -49,7 +49,8 @@ describe("Testing fungsional Login",()=>{
         cy.get('#region_id').select('California')
         cy.get('#zip').type('67890')
         cy.get('#country').select('United States')
-        cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+        cy.get('.action.save.primary').click()
+        cy.get('.message-success.success.message').should('have.text', '\nYou saved the address.\n')
        
     })
 })

@@ -34,13 +34,10 @@ describe("Login Test at Magento",()=>{
         cy.get('#send2').click()
         cy.get('.message-error').should ('have.text', '\nThe account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.\n') 
     })
-    it.only('Berhasil login',()=>{
+    it('Berhasil login',()=>{
         cy.get('#email').type('rohana@mailinator.com')
         cy.get('#pass').type('ROSEhana123')
         cy.get('#send2').click()
-        cy.visit('https://magento.softwaretestingboard.com/')
-        cy.wait(1000)
-        //
-        //cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
+        cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
     })
 })
