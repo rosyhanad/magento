@@ -1,18 +1,18 @@
 class LoginPage {
     visit() {
-        return cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS9jdXN0b21lci9hY2NvdW50L2xvZ291dC8%2C/');
+        cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS9jdXN0b21lci9hY2NvdW50L2xvZ291dC8%2C/');
     }
     getEmailInput(email){
-        return cy.get('#email').type(email)
+        cy.get('#email').type(email)
     }
     Emailclear(){
-        return cy.get('#email').clear()
+        cy.get('#email').clear()
     }
     getPassInput(pass){
-        return cy.get('#pass').type(pass)
+        cy.get('#pass').type(pass)
     }
     Passclear(){
-        return cy.get('#pass').clear()
+        cy.get('#pass').clear()
     }
     clickbutton(){
         cy.get('#send2').click()
