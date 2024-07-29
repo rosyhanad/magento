@@ -1,43 +1,52 @@
-describe("Login Test at Magento",()=>{
-    beforeEach ('Mengakses halaman login',()=>{
-        cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS9jdXN0b21lci9hY2NvdW50L2xvZ291dC8%2C/')
+import LoginPage from '../../support/pages/Login'
+
+describe("Login Test POM at Magento",()=>{
+
+    beforeEach ('Mengakses Halaman Login Magento',()=>{
+        cy.clearCookies()
+        LoginPage.visit()
     })
-    it('Mengosongkan field login',()=>{
-        cy.get('#email').clear()
-        cy.get('#pass').clear()
-        cy.get('#send2').click()
-        cy.get('#email-error').should ('have.text', 'This is a required field.')
-        cy.get('#pass-error').should ('have.text', 'This is a required field.')
+
+    it('Mengosongkan Email dan Password', ()=>{
+        LoginPage.Emailclear()
+        LoginPage.Passclear()
+        LoginPage.clickbutton()
+        LoginPage.errorEmail()
+        LoginPage.errorPass()
     })
-    it('Mengosongkan field email',()=>{
-        cy.get('#email').clear()
-        cy.get('#pass').type('ROSEhana123')
-        cy.get('#send2').click()
-        cy.wait(500)
-        cy.get('#email-error').should ('have.text', 'This is a required field.')
+
+    it('Mengosongkan Email saja',()=>{
+        LoginPage.Emailclear()
+        LoginPage.getPassInput('ROSEhana123@')
+        LoginPage.clickbutton()
+        LoginPage.errorEmail()
     })
-    it('Mengosongkan field password',()=>{
-        cy.get('#email').type('roseeehana@mailinator.com')
-        cy.get('#pass').clear()
-        cy.get('#send2').click()
-        cy.get('#pass-error').should ('have.text', 'This is a required field.')  
+    it('Mengosongkan Password Saja',()=>{
+        LoginPage.getEmailInput('rosehana@mailinator.com')
+        LoginPage.Passclear()
+        LoginPage.clickbutton()
+        LoginPage.errorPass()
     })
-    it('Mengisi field email dengan invalid email',()=>{
-        cy.get('#email').type('roseeehana')
-        cy.get('#pass').type('ROSEhana123')
-        cy.get('#send2').click()
-        cy.get('#email-error').should ('have.text', 'Please enter a valid email address (Ex: johndoe@domain.com).')  
+
+    it('incorrect input email',()=>{
+        LoginPage.getEmailInput('rosehana')
+        LoginPage.getPassInput('ROSEhana123@')
+        LoginPage.clickbutton()
+        LoginPage.incorrectEmail()
     })
-    it('Mengisi password dengan invalid password ',()=>{
-        cy.get('#email').type('roseeehana@mailinator.com')
-        cy.get('#pass').type('ROSE')
-        cy.get('#send2').click()
-        cy.get('.message-error').should ('have.text', '\nThe account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.\n') 
+
+    it('Incorrect input Password',()=>{
+        LoginPage.getEmailInput('rosehana@mailinator.com')
+        LoginPage.getPassInput('rosehana')
+        LoginPage.clickbutton()
+        LoginPage.incorrectPass()
     })
-    it('Berhasil login',()=>{
-        cy.get('#email').type('rohana@mailinator.com')
-        cy.get('#pass').type('ROSEhana123')
-        cy.get('#send2').click()
-        cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
+
+    it('Berhasil Login',()=>{
+        LoginPage.getEmailInput('rohana@mailinator.com')
+        LoginPage.getPassInput('ROSEhana123')
+        LoginPage.clickbutton()
+        LoginPage.succesLogin()
     })
+
 })
