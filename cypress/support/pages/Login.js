@@ -15,22 +15,22 @@ class LoginPage {
         return cy.get('#pass').clear()
     }
     clickbutton(){
-        cy.get('#send2').click()
+        return cy.get('#send2').click()
     }
     errorEmail(){
-        cy.get('#email-error').should ('have.text', 'This is a required field.')
+        return cy.get('#email-error').should ('have.text', 'This is a required field.')
     }
     errorPass(){
-        cy.get('#pass-error').should ('have.text', 'This is a required field.')
+        return cy.get('#pass-error').should ('have.text', 'This is a required field.')
     }
     incorrectEmail(){
-        cy.get('#email-error').should ('have.text', 'Please enter a valid email address (Ex: johndoe@domain.com).')  
+        return cy.get('#email-error').should ('have.text', 'Please enter a valid email address (Ex: johndoe@domain.com).')  
     }
     incorrectPass(){
-        cy.get('.message-error').should ('have.text', '\nThe account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.\n')
+        return cy.get('.message-error').should ('have.text', '\nThe account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.\n')
     }
     succesLogin(){
-        cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
+        return cy.get('.logged-in').should('have.text', 'Welcome, Rohan Rohanna!Welcome, Rohan Rohanna!')
     }
 }
 module.exports = new LoginPage ();
